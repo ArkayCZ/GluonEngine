@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Renderer.h"
+#include "../Files/FileUtils.h"
 #include <deque>
 
 namespace ge {namespace graphics
@@ -11,11 +12,13 @@ namespace ge {namespace graphics
 		BufferedRenderer(RenderDevice* device, RenderTarget* target);
 		~BufferedRenderer();
 
-		void SubmitRenderable(ge::Entity* renderable);
+		void Render(ge::Entity* renderable) override;
+		void Begin(const Camera& camera) override;
+		void End(bool flush) override;
 		void Flush() override;
-
 	private:
-		std::deque<ge::Entity*>* m_Queue;
+		ge::graphics::Shader* m_BasicShader;
+		std::deque<ge::Entity*> m_Queue;
 	};
 
 } }

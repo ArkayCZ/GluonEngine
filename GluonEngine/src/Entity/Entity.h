@@ -17,9 +17,9 @@ namespace ge
 		template <typename T>
 		T* GetComponent();
 
-		void OnRender(ge::RenderBundle* bundle);
-		void OnUpdate(ge::UpdateBundle* bundle);
-		void OnInit(ge::InitBundle* bundle);
+		void OnRender(RenderBundle* bundle);
+		void OnUpdate(UpdateBundle* bundle);
+		void OnInit(InitBundle* bundle);
 		void OnDestroy();
 
 		bool IsRemoved() const { return m_Removed; }

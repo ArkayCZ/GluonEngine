@@ -3,6 +3,7 @@
 #include "../Entity/Entity.h"
 #include "RenderDevice.h"
 #include "RenderTarget.h"
+#include "Camera.h"
 
 
 namespace ge
@@ -31,9 +32,13 @@ namespace ge { namespace graphics
 		unsigned int GetViewportWidth() { return m_RenderTarget->GetWidth(); }
 		unsigned int GetViewportHeight() { return m_RenderTarget->GetHeight(); }
 
+
+		virtual void Begin(const Camera& camera) = 0;
 		virtual void Render(ge::Entity* entity) = 0;
+		virtual void End(bool flush) = 0;
 		virtual void Flush() = 0;
-	private:
+	protected:
+		const Camera* m_CurrentCamera;
 		RenderDevice* m_RenderDevice;
 		RenderTarget* m_RenderTarget;
 	};

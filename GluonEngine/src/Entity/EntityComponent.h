@@ -1,6 +1,12 @@
 ﻿#pragma once
 
-namespace ge { class Entity; }
+namespace ge
+{
+	class Entity;
+	struct InitBundle;
+	struct UpdateBundle;
+	struct RenderBundle;
+}
 
 namespace ge { namespace components
 {
@@ -15,6 +21,7 @@ namespace ge { namespace components
 		EntityComponent(ge::Entity* entity)
 		{
 			m_Parent = entity;
+			m_Removed = false;
 		}
 
 		virtual void OnInit(ge::InitBundle* bundle) {}

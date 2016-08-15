@@ -9,6 +9,8 @@
 
 namespace ge { namespace graphics
 {
+	class RenderTarget;
+
 	class RenderDevice
 	{
 	public:
@@ -24,13 +26,13 @@ namespace ge { namespace graphics
 
 		virtual void SetClearColor(float r, float g, float b, float a) = 0;
 
-		virtual Mesh* CreateMesh(IndexedModel* model) = 0;
+		virtual ge::graphics::Mesh* CreateMesh(IndexedModel* model) = 0;
 
-		virtual Shader* CompileShader(const std::string& vertexShader, const std::string& fragmentShader) = 0;
+		virtual ge::graphics::Shader* CompileShader(const std::string& vertexShader, const std::string& fragmentShader) = 0;
 
-		virtual Texture* CreateTexture(int* pixelData, int width, int height, int filtering) = 0;
+		virtual ge::graphics::Texture* CreateTexture(int* pixelData, int width, int height, int filtering) = 0;
 
-		virtual RenderTarget* GenerateRenderTarget(unsigned int width, unsigned int height) = 0;
+		virtual ge::graphics::RenderTarget* GenerateRenderTarget(unsigned int width, unsigned int height) = 0;
 
 		enum
 		{
