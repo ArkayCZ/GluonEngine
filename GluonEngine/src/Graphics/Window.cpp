@@ -1,5 +1,7 @@
 #include "Window.h"
 
+using namespace ge::graphics;
+
 Window::Window(int width, int height, const char* title, bool fullscreen)
 {
 	if (!this->InitGLFW())

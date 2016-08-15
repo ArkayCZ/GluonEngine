@@ -1,8 +1,13 @@
 #pragma once
-class Texture
-{
-public:
-	Texture();
-	~Texture();
-};
 
+namespace ge { namespace graphics
+{
+	class Texture
+	{
+	public:
+		Texture();
+		~Texture();
+	};
+
+
+} }

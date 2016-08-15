@@ -2,6 +2,7 @@
 #include <fstream>
 #include "../Common.h"
 
+using namespace ge::files;
 
 std::string FileUtils::LoadFile(const std::string& path)
 {

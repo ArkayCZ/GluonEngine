@@ -1,6 +1,7 @@
 ﻿#include "Shader.h"
 #include "../Common.h"
 
+using namespace ge::graphics;
 
 Shader::Shader(GLuint programId, GLuint* shaders)
 {

@@ -148,31 +148,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Entity\Entity.cpp" />
     <ClCompile Include="src\Files\FileUtils.cpp" />
+    <ClCompile Include="src\Graphics\BufferedRenderer.cpp" />
     <ClCompile Include="src\Graphics\Camera.cpp" />
     <ClCompile Include="src\Graphics\Mesh.cpp" />
-    <ClCompile Include="src\Graphics\RenderContext.cpp" />
+    <ClCompile Include="src\Graphics\RenderTarget.cpp" />
     <ClCompile Include="src\Graphics\Shader.cpp" />
     <ClCompile Include="src\Graphics\Transform.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Graphics\OpenGLRenderDevice.cpp" />
     <ClCompile Include="src\Graphics\Window.cpp" />
+    <ClCompile Include="src\Graphics\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Bundles.h" />
+    <ClInclude Include="src\Entity\Entity.h" />
     <ClInclude Include="src\Common.h" />
+    <ClInclude Include="src\Entity\EntityComponent.h" />
+    <ClInclude Include="src\Entity\IdAssigner.h" />
     <ClInclude Include="src\Files\FileUtils.h" />
+    <ClInclude Include="src\Graphics\BufferedRenderer.h" />
     <ClInclude Include="src\Graphics\Camera.h" />
     <ClInclude Include="src\Graphics\Common.h" />
     <ClInclude Include="src\Graphics\IndexedModel.h" />
     <ClInclude Include="src\Graphics\Mesh.h" />
-    <ClInclude Include="src\Graphics\RenderContext.h" />
     <ClInclude Include="src\Graphics\RenderDevice.h" />
     <ClInclude Include="src\Graphics\OpenGLRenderDevice.h" />
+    <ClInclude Include="src\Graphics\Renderer.h" />
     <ClInclude Include="src\Graphics\RenderTarget.h" />
     <ClInclude Include="src\Graphics\Shader.h" />
     <ClInclude Include="src\Graphics\Transform.h" />
     <ClInclude Include="src\Graphics\Vertex.h" />
     <ClInclude Include="src\Graphics\Window.h" />
+    <ClInclude Include="src\Graphics\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Basic\fragment.glsl" />

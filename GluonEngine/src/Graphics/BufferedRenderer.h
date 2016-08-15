@@ -1,15 +1,21 @@
 ﻿#pragma once
 
 #include "Renderer.h"
-#include <queue>
+#include <deque>
 
-class BufferedRenderer : public Renderer
+namespace ge {namespace graphics
 {
-public:
-	BufferedRenderer(RenderDevice* device, RenderTarget* target);
-	void SubmitRenderable(Renderable& renderable) override;
-	void Flush() override;
+	class BufferedRenderer : public Renderer
+	{
+	public:
+		BufferedRenderer(RenderDevice* device, RenderTarget* target);
+		~BufferedRenderer();
 
-private:
-	std::queue<Renderable> m_Queue;
-};
+		void SubmitRenderable(ge::Entity* renderable);
+		void Flush() override;
+
+	private:
+		std::deque<ge::Entity*>* m_Queue;
+	};
+
+} }

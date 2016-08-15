@@ -4,6 +4,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+using namespace ge::graphics;
 
 bool OpenGLRenderDevice::Initialize()
 {
@@ -18,7 +19,7 @@ bool OpenGLRenderDevice::Initialize()
 	}
 
 	glEnable(GL_DEPTH_TEST);
-	glFrontFace(GL_CW);
+	//glFrontFace(GL_CW);
 	return true;
 }
 
@@ -51,22 +52,23 @@ Mesh* OpenGLRenderDevice::CreateMesh(IndexedModel* model)
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glDisableVertexAttribArray(0);
+	//glDisableVertexAttribArray(0);
 
 	// Texcoord buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffers[Mesh::TEXCOORD_BUFFER]);
-	glBufferData(GL_ARRAY_BUFFER, model->GetTextureCoords().size() * sizeof(model->GetTextureCoords[0]), &model->GetTextureCoords()[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, model->GetTextureCoords().size() * sizeof(model->GetTextureCoords()[0]), &model->GetTextureCoords()[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glDisableVertexAttribArray(1);
+	//glDisableVertexAttribArray(1);
 	
 	// Index buffer
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vertexBuffers[Mesh::INDEX_BUFFER]);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(model->GetIndices()[0]) * model->GetIndices().size(), &model->GetIndices()[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(model->GetIndices()[0]) * drawCount, &model->GetIndices()[0], GL_STATIC_DRAW);
 
 	glBindVertexArray(0);
 
+	Mesh* mesh = new Mesh(vertexArray, vertexBuffers, drawCount);
 	return mesh;
 }
 
@@ -100,7 +102,8 @@ Texture* OpenGLRenderDevice::CreateTexture(int* pixelData, int width, int height
 	return nullptr;
 }
 
-RenderTarget* OpenGLRenderDevice::GenerateRenderTarget(unsigned width, unsigned height)
+
+RenderTarget* OpenGLRenderDevice::GenerateRenderTarget(unsigned int width, unsigned int height)
 {
 	GLuint framebuffer, texture, depthRenderBuffer;
 	glGenFramebuffers(1, &framebuffer);
@@ -112,7 +115,7 @@ RenderTarget* OpenGLRenderDevice::GenerateRenderTarget(unsigned width, unsigned 
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
+	
 	glGenRenderbuffers(1, &depthRenderBuffer);
 	glBindRenderbuffer(GL_RENDERBUFFER, depthRenderBuffer);
 	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);

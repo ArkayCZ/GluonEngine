@@ -1,8 +1,12 @@
-﻿#version 330 core
+﻿#version 330
 
 layout (location = 0) out vec4 color;
 uniform vec3 u_Color;
 
+in vec3 v_Color;
+
 void main() {
-	color = vec4(u_Color, 1.0);
+	vec3 c = v_Color;
+	c += u_Color;
+	color = vec4(c, 1.0);
 }

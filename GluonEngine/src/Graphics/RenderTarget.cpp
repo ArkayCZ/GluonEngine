@@ -1,5 +1,6 @@
 ﻿#include "RenderTarget.h"
-#include "GL/glew.h"
+
+using namespace ge::graphics;
 
 RenderTarget::RenderTarget(GLuint id, unsigned int width, unsigned int height)
 	: m_TargetID(id), m_Width(width), m_Height(height)

@@ -4,29 +4,32 @@
 #include "OpenGLRenderDevice.h"
 #include <GLFW/glfw3.h>
 
-class Window
+namespace ge { namespace graphics
 {
-public:
-	Window(int width, int height, const char* title, bool fullscreen);
+	class Window
+	{
+	public:
+		Window(int width, int height, const char* title, bool fullscreen);
 
-	bool ShouldClose() const;
-	void Show() const;
-	void Close() const;
-	void Update() const;
-	void SwapBuffers() const;
-	void Center() const;
-	OpenGLRenderDevice* GetRenderDevice() const;
-	RenderTarget* GetRenderTarget() const;
+		bool ShouldClose() const;
+		void Show() const;
+		void Close() const;
+		void Update() const;
+		void SwapBuffers() const;
+		void Center() const;
+		OpenGLRenderDevice* GetRenderDevice() const;
+		RenderTarget* GetRenderTarget() const;
 
-private:
-	GLFWwindow* m_Window;
-	OpenGLRenderDevice* m_RenderDevice;
-	RenderTarget* m_RenderTarget;
+	private:
+		GLFWwindow* m_Window;
+		OpenGLRenderDevice* m_RenderDevice;
+		RenderTarget* m_RenderTarget;
 
-	int m_Width, m_Height;
-	bool m_Fullscreen;
-	const char* m_Title;
+		int m_Width, m_Height;
+		bool m_Fullscreen;
+		const char* m_Title;
 
-	bool InitGLFW();
-};
+		bool InitGLFW();
+	};
+}}
 

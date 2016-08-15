@@ -5,27 +5,31 @@
 #include <GL/glew.h>
 #include <glm/detail/type_vec3.hpp>
 
-class Vertex;
-
-class Mesh
+namespace ge {namespace graphics
 {
-public:
-	Mesh(GLuint vao, GLuint* buffers, unsigned int drawCount);
-
-	GLuint GetVAO() const { return m_VAO; }
-	GLuint* GetBuffers() const { return m_Buffers; }
-	const unsigned int& GetDrawCount() const { return m_DrawCount; }
-
-	enum
+	class Mesh
 	{
-		POSITION_BUFFER,
-		TEXCOORD_BUFFER,
-		INDEX_BUFFER,
-		BUFFER_COUNT
+	public:
+		Mesh(GLuint vao, GLuint* buffers, unsigned int drawCount);
+
+		GLuint GetVAO() const { return m_VAO; }
+		GLuint* GetBuffers() const { return m_Buffers; }
+		const unsigned int& GetDrawCount() const { return m_DrawCount; }
+
+		void Draw();
+
+		enum
+		{
+			POSITION_BUFFER,
+			TEXCOORD_BUFFER,
+			INDEX_BUFFER,
+			BUFFER_COUNT
+		};
+
+	private:
+		unsigned int m_DrawCount;
+		GLuint m_VAO;
+		GLuint* m_Buffers;
 	};
 
-private:
-	unsigned int m_DrawCount;
-	GLuint m_VAO;
-	GLuint* m_Buffers;
-};
+} }

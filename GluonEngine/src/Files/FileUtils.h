@@ -1,8 +1,14 @@
 ﻿#pragma once
+
 #include <string>
 
-class FileUtils
+
+namespace ge { namespace files
 {
-public:
-	static std::string LoadFile(const std::string& path);
-};
+	class FileUtils
+	{
+	public:
+		static std::string LoadFile(const std::string& path);
+	};
+
+}}

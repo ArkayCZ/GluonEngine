@@ -1,6 +1,8 @@
 ﻿#include "Transform.h"
 #include <glm/gtx/transform.hpp>
 
+using namespace ge::graphics;
+
 Transform::Transform()
 {
 	m_Translation = glm::vec3(1);
@@ -29,8 +31,10 @@ glm::mat4 Transform::GetModelMatrix() const
 	return translationMatrix * rotationMatrix * scaleMatrix;
 }
 
-glm::mat4 Transform::GetWorldMatrix(glm::mat4 projectionMatrix) const
+glm::mat4 Transform::GetWorldMatrix(const glm::mat4& projectionMatrix) const
 {
-	return projectionMatrix * this->GetModelMatrix();
-}
+	glm::mat4 projection = projectionMatrix;
+	glm::mat4 model = this->GetModelMatrix();
 
+	return projection * model;
+}
