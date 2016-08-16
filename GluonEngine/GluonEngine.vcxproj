@@ -164,6 +164,7 @@
     <ClCompile Include="src\Graphics\Texture.cpp" />
     <ClCompile Include="src\Layer.cpp" />
     <ClCompile Include="TestGame.cpp" />
+    <ClCompile Include="TestLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bundles.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="src\Graphics\Texture.h" />
     <ClInclude Include="src\Layer.h" />
     <ClInclude Include="src\Timer.h" />
+    <ClInclude Include="TestLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Basic\fragment.glsl" />

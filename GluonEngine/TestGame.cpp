@@ -7,18 +7,14 @@ class TestGame : public ge::Game
 {
 	
 public:
-	TestGame()
-		: Game("Test game")
+	TestGame() : Game("Test game", 1280, 720, false)
 	{
 		
 	}
 
-	virtual ~TestGame() override {
+	void OnInit() override 
+	{
 
-	}
-
-	void OnInit() override {
-		this->CreateWindow(WIDTH, HEIGHT, false);
 	}
 };
 

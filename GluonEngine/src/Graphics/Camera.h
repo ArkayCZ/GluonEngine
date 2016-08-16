@@ -16,10 +16,13 @@ namespace ge {namespace graphics
 			m_Forward = glm::vec3(0, 0, 1);
 		}
 
+		Camera() : Camera(glm::vec3(0, 0, -1), 70.0f, 16.0f / 9.0f, 0.001f, 1000.0f) {}
+
 		inline glm::mat4 GetViewProjection() const
 		{
 			return m_Perspective * glm::lookAt(m_Position, m_Position + m_Forward, m_Up);
 		}
+
 
 	private:
 

@@ -8,7 +8,11 @@
 
 namespace ge
 {
+	class Layer;
+}
 
+namespace ge
+{
 	class Game
 	{
 	public:
@@ -16,7 +20,7 @@ namespace ge
 		{
 		}
 
-		Game(const std::string& title);
+		Game(const std::string& title, unsigned int windowWidth, unsigned int windowHeight, bool fullscreen);
 
 		virtual void OnInit() = 0;
 
@@ -28,7 +32,7 @@ namespace ge
 		void Start();
 		void Stop();
 
-		void PushLayer(Layer* layer);
+		void PushLayer(ge::Layer* layer);
 		void PopLayer();
 
 		void CreateWindow(unsigned int width, unsigned int height, bool fullscreen);

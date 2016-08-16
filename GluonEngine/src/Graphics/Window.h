@@ -17,8 +17,12 @@ namespace ge { namespace graphics
 		void Update() const;
 		void SwapBuffers() const;
 		void Center() const;
+		void EnableVSync(bool value);
 		OpenGLRenderDevice* GetRenderDevice() const;
 		RenderTarget* GetRenderTarget() const;
+
+		int GetWidth() const { return m_Width; }
+		int GetHeight() const { return m_Height; }
 
 	private:
 		GLFWwindow* m_Window;

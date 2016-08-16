@@ -1,15 +1,21 @@
 ﻿#pragma once
 #include "Graphics/Renderer.h"
+#include "Game.h"
+#include "Graphics/Camera.h"
 
 namespace ge
 {
+
+	class Game;
+
 	class Layer
 	{
 	public:
 
-		Layer(const glm::mat4& projectionMatrix)
+		Layer(ge::Game* game, ge::graphics::Camera* camera)
 		{
-			m_ProjectionMatrix = projectionMatrix;
+			m_Game = game;
+			m_Camera = camera;
 		}
 
 		virtual void OnInit(InitBundle* bundle) = 0;
@@ -19,8 +25,9 @@ namespace ge
 
 		void SetRenderer(graphics::Renderer& renderer) { m_Renderer = &renderer; }
 
-	private:
+	protected:
+		ge::Game* m_Game;
 		ge::graphics::Renderer* m_Renderer;
-		glm::mat4 m_ProjectionMatrix;
+		ge::graphics::Camera* m_Camera;
 	};
 }

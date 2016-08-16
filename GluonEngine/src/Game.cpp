@@ -5,12 +5,12 @@ using namespace ge;
 
 typedef unsigned long long int ulo;
 
-Game::Game(const std::string& title) : m_Title(title)
+Game::Game(const std::string& title, unsigned int windowWidth, unsigned int windowHeight, bool fullscreen) : m_Title(title)
 {
 	m_Running = false;
 	m_Window = nullptr;
 
-	CreateWindow(1280, 720, false);
+	this->CreateWindow(windowWidth, windowHeight, fullscreen);
 
 	m_UpdateBundle = new ge::UpdateBundle();
 	m_RenderBundle = new ge::RenderBundle();
@@ -38,6 +38,7 @@ void Game::OnDestroy()
 void Game::_OnInit()
 {
 	OnInit();
+	
 	for (unsigned int i = 0; i < m_LayerStack.size(); i++)
 		m_LayerStack[i]->OnInit(m_InitBundle);
 }
@@ -77,6 +78,7 @@ void Game::SetRenderer(ge::graphics::Renderer* renderer)
 
 void Game::Run()
 {
+	this->_OnInit();
 
 	if (m_Window == nullptr)
 		ERROR("You did not create a Window!");
@@ -96,7 +98,7 @@ void Game::Run()
 		delta += (now - last) / nsPerTick;
 		last = now;
 
-		while(delta > 1)
+		while(delta >= 1)
 		{
 			this->OnUpdate();
 			delta--;

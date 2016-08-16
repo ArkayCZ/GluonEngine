@@ -52,6 +52,11 @@ void Window::Center() const
 	glfwSetWindowPos(m_Window, xPos, yPos);
 }
 
+void Window::EnableVSync(bool value)
+{
+	glfwSwapInterval(value ? 1 : 0);
+}
+
 void Window::Update() const
 {
 	glfwPollEvents();
@@ -65,6 +70,7 @@ OpenGLRenderDevice* Window::GetRenderDevice() const
 bool Window::InitGLFW()
 {
 	int initCode = glfwInit();
+	LOG("GLFW initialized with code " << initCode);
 	return initCode == GLFW_TRUE;
 }
 

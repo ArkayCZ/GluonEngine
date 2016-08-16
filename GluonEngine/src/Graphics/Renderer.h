@@ -31,7 +31,8 @@ namespace ge { namespace graphics
 
 		unsigned int GetViewportWidth() { return m_RenderTarget->GetWidth(); }
 		unsigned int GetViewportHeight() { return m_RenderTarget->GetHeight(); }
-
+		RenderDevice* GetRenderDevice() { return m_RenderDevice; }
+		RenderTarget* GetRenderTarget() { return m_RenderTarget; }
 
 		virtual void Begin(const Camera& camera) = 0;
 		virtual void Render(ge::Entity* entity) = 0;
