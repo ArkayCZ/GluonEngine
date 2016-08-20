@@ -8,5 +8,5 @@ in vec3 v_Color;
 void main() {
 	vec3 c = v_Color;
 	c += u_Color;
-	color = vec4(c, 1.0);
+	color = vec4(c + vec3(0.5, 0.5, 0.5), 1.0);
 }

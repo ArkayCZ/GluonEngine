@@ -13,6 +13,6 @@ public:
 
 	void OnInit(ge::InitBundle* bundle) override;
 	void OnUpdate(ge::UpdateBundle* bundle) override;
-	void OnRender(ge::RenderBundle* bundle) override;
+	void OnRender() override;
 	void OnDestroy() override;
 };

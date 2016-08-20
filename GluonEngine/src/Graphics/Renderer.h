@@ -29,10 +29,13 @@ namespace ge { namespace graphics
 		void SetRenderTarget(RenderTarget* target) { m_RenderTarget = target; }
 		const RenderTarget& GetRenderTarget() const { return *m_RenderTarget; }
 
-		unsigned int GetViewportWidth() { return m_RenderTarget->GetWidth(); }
-		unsigned int GetViewportHeight() { return m_RenderTarget->GetHeight(); }
-		RenderDevice* GetRenderDevice() { return m_RenderDevice; }
+		unsigned int GetViewportWidth() const { return m_RenderTarget->GetWidth(); }
+		unsigned int GetViewportHeight() const { return m_RenderTarget->GetHeight(); }
+		RenderDevice* GetRenderDevice() const { return m_RenderDevice; }
 		RenderTarget* GetRenderTarget() { return m_RenderTarget; }
+
+		const Camera* GetCurrentCamera() { return m_CurrentCamera; }
+		void SetCamera(const Camera* camera) { m_CurrentCamera = camera; }
 
 		virtual void Begin(const Camera& camera) = 0;
 		virtual void Render(ge::Entity* entity) = 0;

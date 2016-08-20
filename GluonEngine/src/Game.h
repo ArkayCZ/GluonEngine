@@ -24,9 +24,9 @@ namespace ge
 
 		virtual void OnInit() = 0;
 
-		void OnUpdate();
-		void OnRender();
-		void OnDestroy();
+		virtual void OnUpdate();
+		virtual void OnRender();
+		virtual void OnDestroy();
 		void _OnInit();
 
 		void Start();
@@ -42,6 +42,11 @@ namespace ge
 		ge::graphics::RenderDevice* GetRenderDevice() const { return m_RenderDevice; }
 		ge::graphics::Renderer* GetRenderer() const { return m_Renderer; }
 
+	protected:
+
+		ge::InitBundle* m_InitBundle;
+		ge::UpdateBundle* m_UpdateBundle;
+
 	private:
 
 		const std::string& m_Title;
@@ -51,11 +56,7 @@ namespace ge
 		ge::graphics::Window* m_Window;
 		ge::graphics::RenderDevice* m_RenderDevice;
 		ge::graphics::Renderer* m_Renderer;
-
-		ge::RenderBundle* m_RenderBundle;
-		ge::InitBundle* m_InitBundle;
-		ge::UpdateBundle* m_UpdateBundle;
-
+		
 		void Run();
 	};
 };

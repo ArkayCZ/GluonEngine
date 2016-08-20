@@ -149,7 +149,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Entity\Entity.cpp" />
-    <ClCompile Include="src\Entity\MeshComponent.cpp" />
+    <ClCompile Include="src\Entity\RenderComponent.cpp" />
+    <ClCompile Include="src\Entity\SpinningComponent.cpp" />
     <ClCompile Include="src\Files\FileUtils.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Graphics\BufferedRenderer.cpp" />
@@ -171,8 +172,9 @@
     <ClInclude Include="src\Entity\Entity.h" />
     <ClInclude Include="src\Common.h" />
     <ClInclude Include="src\Entity\EntityComponent.h" />
-    <ClInclude Include="src\Entity\IdAssigner.h" />
-    <ClInclude Include="src\Entity\MeshComponent.h" />
+    <ClInclude Include="src\Entity\ComponentIds.h" />
+    <ClInclude Include="src\Entity\RenderComponent.h" />
+    <ClInclude Include="src\Entity\SpinningComponent.h" />
     <ClInclude Include="src\Files\FileUtils.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Graphics\BufferedRenderer.h" />

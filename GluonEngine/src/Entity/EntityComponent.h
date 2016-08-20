@@ -18,11 +18,12 @@ namespace ge { namespace components
 		{
 		}
 
-		EntityComponent(ge::Entity* entity)
+		EntityComponent(const unsigned int& id) : m_ID(id)
 		{
-			m_Parent = entity;
 			m_Removed = false;
 		}
+
+		EntityComponent() : m_ID(0xFFFFFFFF) {}
 
 		virtual void OnInit(ge::InitBundle* bundle) {}
 		virtual void OnUpdate(ge::UpdateBundle* bundle) {}
@@ -32,11 +33,16 @@ namespace ge { namespace components
 		bool IsRemoved() { return m_Removed; }
 		void Remove() { m_Removed = true; }
 
-		Entity* GetOwner() { return m_Parent; }
+		const Entity* GetOwner() const { return m_Owner; }
+		void SetOwner(const ge::Entity* owner) { m_Owner = owner; }
+
+		const unsigned int& GetID() { return m_ID; }
 
 	private:
-		Entity* m_Parent;
+		const Entity* m_Owner;
 		bool m_Removed;
+
+		const unsigned int m_ID;
 	};
 }}
 

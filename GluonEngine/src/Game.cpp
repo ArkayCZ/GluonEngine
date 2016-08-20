@@ -3,7 +3,7 @@
 
 using namespace ge;
 
-typedef unsigned long long int ulo;
+typedef unsigned long long int ulong;
 
 Game::Game(const std::string& title, unsigned int windowWidth, unsigned int windowHeight, bool fullscreen) : m_Title(title)
 {
@@ -13,7 +13,6 @@ Game::Game(const std::string& title, unsigned int windowWidth, unsigned int wind
 	this->CreateWindow(windowWidth, windowHeight, fullscreen);
 
 	m_UpdateBundle = new ge::UpdateBundle();
-	m_RenderBundle = new ge::RenderBundle();
 	m_InitBundle = new ge::InitBundle();
 }
 
@@ -26,7 +25,7 @@ void Game::OnUpdate()
 void Game::OnRender()
 {
 	for (unsigned int i = 0; i < m_LayerStack.size(); i++)
-		m_LayerStack[i]->OnRender(m_RenderBundle);
+		m_LayerStack[i]->OnRender();
 }
 
 void Game::OnDestroy()
@@ -83,17 +82,18 @@ void Game::Run()
 	if (m_Window == nullptr)
 		ERROR("You did not create a Window!");
 
-	ulo last = Timer::GetCurrentNano();
-	ulo lastOut = Timer::GetCurrentMillis();
+	ulong last = Timer::GetCurrentNano();
+	ulong lastOut = Timer::GetCurrentMillis();
 	double delta = 0;
 	double nsPerTick = 1000000000 / 60.0;
 	int FPS = 0;
 	int TPS = 0;
 
-	ulo now;
+	ulong now;
 	while(m_Running)
 	{
 		m_Window->Update();
+		m_Window->GetRenderDevice()->ClearScreen();
 		now = Timer::GetCurrentNano();
 		delta += (now - last) / nsPerTick;
 		last = now;

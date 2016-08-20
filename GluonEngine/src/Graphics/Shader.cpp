@@ -39,7 +39,8 @@ void Shader::CacheUniform(const std::string& name)
 
 GLint Shader::FindUniform(const std::string& name)
 {
-	if(m_UniformCache.find(name) == m_UniformCache.end())
+	// Crash on this line
+	if(m_UniformCache.count(name) == 0)
 		this->CacheUniform(name);
 
 	return m_UniformCache[name];

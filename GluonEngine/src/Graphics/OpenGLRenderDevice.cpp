@@ -92,6 +92,8 @@ Shader* OpenGLRenderDevice::CompileShader(const std::string& vertexSource, const
 	Shader::CheckShaderError(program, GL_VALIDATE_STATUS, true, "Failed validating shaders");
 
 	Shader* result = new Shader(program, shaders);
+	
+	// Must be in every shader.
 	result->CacheUniform("u_WorldMatrix");
 
 	return result;

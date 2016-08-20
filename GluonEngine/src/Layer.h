@@ -16,16 +16,27 @@ namespace ge
 		{
 			m_Game = game;
 			m_Camera = camera;
+			m_Root = new ge::Entity();
 		}
 
-		virtual void OnInit(InitBundle* bundle) = 0;
-		virtual void OnUpdate(UpdateBundle* bundle) = 0;
-		virtual void OnRender(RenderBundle* bundle) = 0;
-		virtual void OnDestroy() = 0;
+		virtual void OnInit(InitBundle* bundle) { m_Root->OnInit(bundle); };
+		virtual void OnUpdate(UpdateBundle* bundle) { m_Root->OnUpdate(bundle); }
+		virtual void OnDestroy() { m_Root->OnDestroy(); }
 
-		void SetRenderer(graphics::Renderer& renderer) { m_Renderer = &renderer; }
+		virtual void OnRender()
+		{
+			m_Renderer->Render(m_Root);
+			m_Renderer->Flush();
+		}
+
+		void SetRenderer(graphics::Renderer& renderer)
+		{
+			m_Renderer = &renderer;
+			m_Renderer->SetCamera(m_Camera);
+		}
 
 	protected:
+		ge::Entity* m_Root;
 		ge::Game* m_Game;
 		ge::graphics::Renderer* m_Renderer;
 		ge::graphics::Camera* m_Camera;
