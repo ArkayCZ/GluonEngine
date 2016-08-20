@@ -14,13 +14,11 @@ namespace ge
 
 		Entity();
 		~Entity();
+		
 		void AddComponent(components::EntityComponent* comp) const;
-		const components::EntityComponent* GetComponent(const int& id);
-
-		template <typename T>
-		T* GetComponent();
-
-		void RemoveComponent(const int& id);
+		const components::EntityComponent* GetComponent(const int& id) const;
+		bool HasComponent(const int& id) const;
+		void RemoveComponent(const int& id) const;
 
 		void AddChild(Entity* other);
 		const std::vector<Entity*> GetChildren();

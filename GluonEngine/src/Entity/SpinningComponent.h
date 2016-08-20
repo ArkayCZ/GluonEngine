@@ -11,9 +11,10 @@ namespace ge { namespace components
 	{
 	public:
 
-		explicit SpinningComponent()
+		explicit SpinningComponent(const std::string& axes)
 			: EntityComponent(Components::SPINNING)
 		{
+			m_Axes = axes;
 		}
 
 
@@ -22,6 +23,9 @@ namespace ge { namespace components
 		void OnUpdate(ge::UpdateBundle* bundle) override;
 		void OnRender(ge::RenderBundle* bundle) override;
 		void OnDestroy() override;
+
+	private:
+		std::string m_Axes;
 	};
 }}
 

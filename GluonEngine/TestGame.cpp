@@ -1,5 +1,6 @@
 ﻿#include "src/Game.h"
 #include "TestLayer.h"
+#include "TestLayer2D.h"
 #include "src/Graphics/BufferedRenderer.h"
 
 #define WIDTH 1440
@@ -22,13 +23,11 @@ public:
 
 	void OnInit() override 
 	{
-		LOG("Total components count: " << COMPONENT_COUNT);
+		this->GetWindow()->EnableVSync(true);
+		this->GetWindow()->GetRenderDevice()->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-		GetWindow()->EnableVSync(true);
-		GetWindow()->GetRenderDevice()->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		SetRenderer(new ge::graphics::BufferedRenderer(GetWindow()->GetRenderDevice(), GetWindow()->GetRenderTarget()));
-
-		PushLayer(new TestLayer(this));
+		this->PushLayer(new TestLayer(this));
+		this->PushLayer(new TestLayer2D(this));
 	}
 };
 

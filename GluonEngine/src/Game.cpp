@@ -1,5 +1,4 @@
 ﻿#include "Game.h"
-#include "Graphics/BufferedRenderer.h"
 
 using namespace ge;
 
@@ -11,6 +10,8 @@ Game::Game(const std::string& title, unsigned int windowWidth, unsigned int wind
 	m_Window = nullptr;
 
 	this->CreateWindow(windowWidth, windowHeight, fullscreen);
+
+	m_RenderDevice = this->GetWindow()->GetRenderDevice();
 
 	m_UpdateBundle = new ge::UpdateBundle();
 	m_InitBundle = new ge::InitBundle();
@@ -55,7 +56,6 @@ void Game::Stop()
 
 void Game::PushLayer(Layer* layer)
 {
-	layer->SetRenderer(*m_Renderer);
 	m_LayerStack.push_back(layer);
 }
 
@@ -68,11 +68,6 @@ void Game::CreateWindow(unsigned int width, unsigned int height, bool fullscreen
 {
 	m_Window = new ge::graphics::Window(width, height, m_Title.c_str(), fullscreen);
 	m_Window->Show();
-}
-
-void Game::SetRenderer(ge::graphics::Renderer* renderer)
-{
-	m_Renderer = renderer;
 }
 
 void Game::Run()

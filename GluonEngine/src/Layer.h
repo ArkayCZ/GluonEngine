@@ -11,12 +11,15 @@ namespace ge
 	class Layer
 	{
 	public:
+		virtual ~Layer()
+		{
+		}
 
-		Layer(ge::Game* game, ge::graphics::Camera* camera)
+		Layer(ge::Game* game, const ge::graphics::Camera* camera)
 		{
 			m_Game = game;
-			m_Camera = camera;
 			m_Root = new ge::Entity();
+			m_Camera = camera;
 		}
 
 		virtual void OnInit(InitBundle* bundle) { m_Root->OnInit(bundle); };
@@ -29,9 +32,9 @@ namespace ge
 			m_Renderer->Flush();
 		}
 
-		void SetRenderer(graphics::Renderer& renderer)
+		void SetRenderer(graphics::Renderer* renderer)
 		{
-			m_Renderer = &renderer;
+			m_Renderer = renderer;
 			m_Renderer->SetCamera(m_Camera);
 		}
 
@@ -39,6 +42,6 @@ namespace ge
 		ge::Entity* m_Root;
 		ge::Game* m_Game;
 		ge::graphics::Renderer* m_Renderer;
-		ge::graphics::Camera* m_Camera;
+		const ge::graphics::Camera* m_Camera;
 	};
 }

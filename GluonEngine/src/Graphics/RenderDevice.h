@@ -30,7 +30,7 @@ namespace ge { namespace graphics
 
 		virtual ge::graphics::Shader* CompileShader(const std::string& vertexShader, const std::string& fragmentShader) = 0;
 
-		virtual ge::graphics::Texture* CreateTexture(int* pixelData, int width, int height, int filtering) = 0;
+		virtual ge::graphics::Texture* CreateTexture(const TextureData* data, int filtering) = 0;
 
 		virtual ge::graphics::RenderTarget* GenerateRenderTarget(unsigned int width, unsigned int height) = 0;
 

@@ -59,7 +59,7 @@ Mesh* OpenGLRenderDevice::CreateMesh(IndexedModel* model)
 	glBufferData(GL_ARRAY_BUFFER, model->GetTextureCoords().size() * sizeof(model->GetTextureCoords()[0]), &model->GetTextureCoords()[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	//glDisableVertexAttribArray(1);
 	
 	// Index buffer
@@ -99,9 +99,23 @@ Shader* OpenGLRenderDevice::CompileShader(const std::string& vertexSource, const
 	return result;
 }
 
-Texture* OpenGLRenderDevice::CreateTexture(int* pixelData, int width, int height, int filtering)
+Texture* OpenGLRenderDevice::CreateTexture(const TextureData* data, int filtering)
 {
-	return nullptr;
+	GLuint texture;
+
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+
+	int _filtering = filtering == Texture::Filtering::LINEAR ? GL_LINEAR : GL_NEAREST;
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, _filtering);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, _filtering);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, data->_Width, data->_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data->_Data);
+	
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	Texture* tex = new Texture(texture, data);
+	return tex;
 }
 
 

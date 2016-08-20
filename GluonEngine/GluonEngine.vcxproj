@@ -149,13 +149,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Entity\Entity.cpp" />
+    <ClCompile Include="src\Entity\MaterialComponent.cpp" />
     <ClCompile Include="src\Entity\RenderComponent.cpp" />
     <ClCompile Include="src\Entity\SpinningComponent.cpp" />
     <ClCompile Include="src\Files\FileUtils.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Graphics\BufferedRenderer.cpp" />
-    <ClCompile Include="src\Graphics\Camera.cpp" />
+    <ClCompile Include="src\Graphics\FPSCamera.cpp" />
     <ClCompile Include="src\Graphics\Mesh.cpp" />
+    <ClCompile Include="src\Graphics\OrthographicCamera.cpp" />
     <ClCompile Include="src\Graphics\RenderTarget.cpp" />
     <ClCompile Include="src\Graphics\Shader.cpp" />
     <ClCompile Include="src\Graphics\Transform.cpp" />
@@ -164,8 +166,10 @@
     <ClCompile Include="src\Graphics\Window.cpp" />
     <ClCompile Include="src\Graphics\Texture.cpp" />
     <ClCompile Include="src\Layer.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="TestGame.cpp" />
     <ClCompile Include="TestLayer.cpp" />
+    <ClCompile Include="TestLayer2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bundles.h" />
@@ -173,6 +177,7 @@
     <ClInclude Include="src\Common.h" />
     <ClInclude Include="src\Entity\EntityComponent.h" />
     <ClInclude Include="src\Entity\ComponentIds.h" />
+    <ClInclude Include="src\Entity\MaterialComponent.h" />
     <ClInclude Include="src\Entity\RenderComponent.h" />
     <ClInclude Include="src\Entity\SpinningComponent.h" />
     <ClInclude Include="src\Files\FileUtils.h" />
@@ -180,8 +185,10 @@
     <ClInclude Include="src\Graphics\BufferedRenderer.h" />
     <ClInclude Include="src\Graphics\Camera.h" />
     <ClInclude Include="src\Graphics\Common.h" />
+    <ClInclude Include="src\Graphics\FPSCamera.h" />
     <ClInclude Include="src\Graphics\IndexedModel.h" />
     <ClInclude Include="src\Graphics\Mesh.h" />
+    <ClInclude Include="src\Graphics\OrthographicCamera.h" />
     <ClInclude Include="src\Graphics\RenderDevice.h" />
     <ClInclude Include="src\Graphics\OpenGLRenderDevice.h" />
     <ClInclude Include="src\Graphics\Renderer.h" />
@@ -192,8 +199,11 @@
     <ClInclude Include="src\Graphics\Window.h" />
     <ClInclude Include="src\Graphics\Texture.h" />
     <ClInclude Include="src\Layer.h" />
+    <ClInclude Include="src\Lib\stb_image.h" />
+    <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\Timer.h" />
     <ClInclude Include="TestLayer.h" />
+    <ClInclude Include="TestLayer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Basic\fragment.glsl" />

@@ -34,7 +34,7 @@ namespace ge { namespace graphics
 		RenderDevice* GetRenderDevice() const { return m_RenderDevice; }
 		RenderTarget* GetRenderTarget() { return m_RenderTarget; }
 
-		const Camera* GetCurrentCamera() { return m_CurrentCamera; }
+		const Camera* GetCurrentCamera() const { return m_CurrentCamera; }
 		void SetCamera(const Camera* camera) { m_CurrentCamera = camera; }
 
 		virtual void Begin(const Camera& camera) = 0;

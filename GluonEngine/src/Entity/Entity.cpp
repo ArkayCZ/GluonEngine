@@ -30,18 +30,17 @@ void Entity::AddComponent(ge::components::EntityComponent* component) const
 }
 
 
-const components::EntityComponent* Entity::GetComponent(const int& id)
+const components::EntityComponent* Entity::GetComponent(const int& id) const
 {
 	return m_Components[id];
 }
 
-template <typename T>
-T* Entity::GetComponent()
+bool Entity::HasComponent(const int& id) const
 {
-	return nullptr;
+	return m_Components[id] != nullptr;
 }
 
-void Entity::RemoveComponent(const int& id)
+void Entity::RemoveComponent(const int& id) const
 {
 	delete m_Components[id];
 }

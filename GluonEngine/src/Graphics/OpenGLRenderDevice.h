@@ -16,7 +16,7 @@ namespace ge {namespace graphics
 
 		Mesh* CreateMesh(IndexedModel* model) override;
 		Shader* CompileShader(const std::string& vertexShader, const std::string& fragmentShader) override;
-		Texture* CreateTexture(int* pixelData, int width, int height, int filtering) override;
+		Texture* CreateTexture(const TextureData* data, int filtering) override;
 		RenderTarget* GenerateRenderTarget(unsigned int width, unsigned int height) override;
 	private:
 
