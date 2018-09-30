@@ -15,7 +15,7 @@ namespace ge {namespace graphics
 		virtual inline glm::mat4 GetViewProjection() const = 0;
 
 		virtual glm::vec3& GetPosition() = 0;
-		virtual void SetPosition(glm::vec3& position) = 0;
+		virtual void SetPosition(glm::vec3 position) = 0;
 
 	};
 

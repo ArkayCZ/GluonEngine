@@ -25,7 +25,7 @@ void Shader::CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const 
 			glGetProgramInfoLog(shader, sizeof(error), NULL, error);
 		else glGetShaderInfoLog(shader, sizeof(error), NULL, error);
 
-		ERROR(errorMessage << ": '" << error << "'");
+		LOG(errorMessage << ": '" << error << "'");
 	}
 }
 
@@ -33,8 +33,9 @@ void Shader::CacheUniform(const std::string& name)
 {
 	GLint location = glGetUniformLocation(m_Program, name.c_str());
 	if (location == -1)
-		ERROR("Could not find uniform " << name);
-	m_UniformCache.insert_or_assign(name, location);
+		LOG("Could not find uniform " << name);
+
+	m_UniformCache[name] = location;
 }
 
 GLint Shader::FindUniform(const std::string& name)

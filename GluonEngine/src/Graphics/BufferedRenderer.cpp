@@ -36,12 +36,12 @@ void BufferedRenderer::End(bool flush)
 void BufferedRenderer::Flush()
 {
 	RenderBundle* bundle = new RenderBundle();
-	bundle->_Renderer = this;
-	bundle->_Shader = m_BasicShader;
+	bundle->renderer = this;
+	bundle->shader = m_BasicShader;
 
 	// Sets the camera matrix used for the entire scene. Each entity then uploads its transformation matrix to the GPU.
 	// TODO: Verify whether this actually brings any benefits.
-	bundle->_Shader->SetUniform("u_ProjectionMatrix", m_CurrentCamera->GetViewProjection());
+	bundle->shader->SetUniform("u_ProjectionMatrix", m_CurrentCamera->GetViewProjection());
 
 	while(!m_Queue.empty())
 	{

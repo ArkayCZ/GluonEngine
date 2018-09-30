@@ -5,6 +5,8 @@
 #include "Layer.h"
 #include "Bundles.h"
 #include "Graphics/Window.h"
+#include "Input/InputManager.h"
+#include "Input/KeyboardInputManager.h"
 
 namespace ge
 {
@@ -35,7 +37,7 @@ namespace ge
 		void PushLayer(ge::Layer* layer);
 		void PopLayer();
 
-		void CreateWindow(unsigned int width, unsigned int height, bool fullscreen);
+		void OpenWindow(unsigned int width, unsigned int height, bool fullscreen);
 		
 		ge::graphics::Window* GetWindow() const { return m_Window; }
 		ge::graphics::RenderDevice* GetRenderDevice() const { return m_RenderDevice; }
@@ -53,7 +55,9 @@ namespace ge
 		const std::string& m_Title;
 		std::vector<Layer*> m_LayerStack;
 		bool m_Running;
-		
+
+		std::vector<input::InputManager*> m_InputManagers;
+
 		void Run();
 
 	};

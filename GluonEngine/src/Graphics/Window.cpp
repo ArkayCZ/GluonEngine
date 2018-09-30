@@ -5,7 +5,7 @@ using namespace ge::graphics;
 Window::Window(int width, int height, const char* title, bool fullscreen)
 {
 	if (!this->InitGLFW())
-		ERROR("Failed to init GLFW!");
+		LOG("Failed to init GLFW!");
 
 	m_Width = width;
 	m_Height = height;
@@ -77,4 +77,9 @@ bool Window::InitGLFW()
 RenderTarget* Window::GetRenderTarget() const
 {
 	return m_RenderTarget;
+}
+
+void Window::RegisterKeyCallback(ge::KeyCallback callback)
+{
+	glfwSetKeyCallback(m_Window, callback);
 }

@@ -7,25 +7,26 @@ using namespace ge::files;
 
 std::string FileUtils::LoadFile(const std::string& path)
 {
-	std::ifstream inputStream;
-	inputStream.open(path.c_str());
+	std::ifstream file;
+	file.open((path).c_str());
 
-	std::string content;
+	std::string output;
 	std::string line;
 
-	if(inputStream.is_open())
+	if(file.is_open())
 	{
-		while(inputStream.good())
+		while(file.good())
 		{
-			std::getline(inputStream, line);
-			content.append(line).append("\n");
+			getline(file, line);
+			output.append(line + "\n");
 		}
-	} else
+	}
+	else
 	{
-		ERROR("Could not open file " << path << "!");
+		std::cerr << "Unable to load shader: " << path << std::endl;
 	}
 
-	return content;
+	return output;
 }
 
 ge::graphics::TextureData* FileUtils::LoadTextureData(const std::string& path)
@@ -36,7 +37,7 @@ ge::graphics::TextureData* FileUtils::LoadTextureData(const std::string& path)
 	unsigned char* pixelData = stbi_load(path.c_str(), &width, &height, &bytesPerPixel, 4);
 
 	if (pixelData == NULL)
-		ERROR("Failed to load the texture '" << path << "'");
+		LOG("Failed to load the texture '" << path << "'");
 
 	data->_Width = width;
 	data->_Height = height;

@@ -29,7 +29,7 @@ void TestLayer::OnInit(ge::InitBundle* bundle)
 	transform = new ge::graphics::Transform(glm::vec3(0, 0, 1), glm::vec3(0), glm::vec3(1));
 	ge::Entity* entity = new ge::Entity();
 	entity->AddComponent(new ge::components::RenderComponent(mesh));
-	entity->AddComponent(new ge::components::SpinningComponent("y"));
+	entity->AddComponent(new ge::components::SpinningComponent("yxz"));
 	entity->AddComponent(new ge::components::MaterialComponent(texture));
 	entity->SetTransform(transform);
 

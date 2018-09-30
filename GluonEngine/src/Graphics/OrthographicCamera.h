@@ -9,13 +9,13 @@ namespace ge { namespace graphics
 		
 	public:
 
-		OrthographicCamera(glm::vec3& position, float left, float right, float bottom, float top, float near, float far) 
+		OrthographicCamera(glm::vec3 position, float left, float right, float bottom, float top, float near, float far)
 			: m_Position(position)
 		{
-			m_ProjectionMatrix = glm::ortho(left, right, bottom, top, near, far);
+			// m_ProjectionMatrix = glm::ortho(left, right, bottom, top, near, far);
 		}
 
-		~OrthographicCamera()
+		~OrthographicCamera() override
 		{
 			
 		}
@@ -27,8 +27,8 @@ namespace ge { namespace graphics
 
 
 		glm::vec3& GetPosition() override { return m_Position; }
-		void SetPosition(glm::vec3& position) override { m_Position = position; }
-	private:
+		void SetPosition(glm::vec3 position) override { m_Position = position; }
+	protected:
 		glm::mat4 m_ProjectionMatrix;
 		glm::vec3 m_Position;
 	};

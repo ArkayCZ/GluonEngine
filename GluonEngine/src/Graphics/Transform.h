@@ -9,7 +9,7 @@ namespace ge { namespace graphics
 	public:
 
 		Transform();
-		Transform(glm::vec3& translation, glm::vec3& rotation, glm::vec3& scale);
+		Transform(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale);
 
 		glm::vec3& GetTranslation() { return m_Translation; }
 		glm::vec3& GetRotation() { return m_Rotation; }

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <GL/glew.h>
+#include <GLAD/glad.h>
 #include "RenderDevice.h"
 
 namespace ge { namespace graphics {

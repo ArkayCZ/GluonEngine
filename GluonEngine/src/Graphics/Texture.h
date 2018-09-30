@@ -1,5 +1,5 @@
 #pragma once
-#include <GL/glew.h>
+#include <GLAD/glad.h>
 
 namespace ge { namespace graphics
 {

@@ -26,7 +26,6 @@ public:
 		this->GetWindow()->EnableVSync(true);
 		this->GetWindow()->GetRenderDevice()->SetClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-		this->PushLayer(new TestLayer(this));
 		this->PushLayer(new TestLayer2D(this));
 	}
 };

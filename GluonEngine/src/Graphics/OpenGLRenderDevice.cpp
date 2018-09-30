@@ -1,20 +1,19 @@
 ﻿#include "OpenGLRenderDevice.h"
 #include "../Common.h"
 
-#include <GL/glew.h>
+#include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
 
 using namespace ge::graphics;
 
 bool OpenGLRenderDevice::Initialize()
 {
-	int glewInitResult = glewInit();
-
+	int glewInitResult = gladLoadGL();
 	LOG("GLEW intialized with code " << glewInitResult);
 
-	if(glewInitResult != GLEW_OK)
+	if(glewInitResult != GLFW_TRUE)
 	{
-		ERROR("Failed to init GLEW!");
+		LOG("Failed to init GLEW!");
 		return false;
 	}
 
@@ -144,7 +143,7 @@ RenderTarget* OpenGLRenderDevice::GenerateRenderTarget(unsigned int width, unsig
 
 	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 	{
-		ERROR("FALED TO CREATE A FRAMEBUFFER!");
+		LOG("FALED TO CREATE A FRAMEBUFFER!");
 	}
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -158,14 +157,16 @@ GLuint OpenGLRenderDevice::CreateShader(const std::string& source, GLuint type) 
 	GLuint shader = glCreateShader(type);
 
 	if (shader == 0)
-		ERROR("Error compiling shader!");
+		LOG("Error compiling shader!");
 
-	const GLchar* src[1];
+	const GLchar* src[2];
 	src[0] = source.c_str();
-	GLint length[1];
+    src[1] = "\0";
+	GLint length[2];
 	length[0] = source.length();
+    length[1] = 1;
 
-	glShaderSource(shader, 1, src, length);
+	glShaderSource(shader, 2, src, length);
 	glCompileShader(shader);
 
 	Shader::CheckShaderError(shader, GL_COMPILE_STATUS, false, "Error compiling shader!");

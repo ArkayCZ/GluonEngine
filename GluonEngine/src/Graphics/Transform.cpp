@@ -10,7 +10,7 @@ Transform::Transform()
 	m_Scale = glm::vec3(1);
 }
 
-Transform::Transform(glm::vec3& translation, glm::vec3& rotation, glm::vec3& scale)
+Transform::Transform(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale)
 {
 	m_Translation = translation;
 	m_Rotation = rotation;

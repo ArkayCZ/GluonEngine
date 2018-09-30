@@ -4,6 +4,11 @@
 #include "OpenGLRenderDevice.h"
 #include <GLFW/glfw3.h>
 
+namespace ge {
+	namespace graphics { class Window; }
+	typedef void (* KeyCallback)(GLFWwindow*,int,int,int,int);
+}
+
 namespace ge { namespace graphics
 {
 	class Window
@@ -24,6 +29,8 @@ namespace ge { namespace graphics
 		int GetWidth() const { return m_Width; }
 		int GetHeight() const { return m_Height; }
 
+		void RegisterKeyCallback(KeyCallback callback);
+
 	private:
 		GLFWwindow* m_Window;
 		OpenGLRenderDevice* m_RenderDevice;
@@ -34,6 +41,9 @@ namespace ge { namespace graphics
 		const char* m_Title;
 
 		bool InitGLFW();
-	};
+
+        KeyCallback m_Callback;
+    };
 }}
+
 

@@ -2,7 +2,7 @@
 
 #include "../Common.h"
 #include <vector>
-#include <GL/glew.h>
+#include <GLAD/glad.h>
 #include <glm/detail/type_vec3.hpp>
 
 namespace ge {namespace graphics
